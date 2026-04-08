@@ -106,14 +106,21 @@ body {
   background: var(--surface);
   border: 2px solid #1e2d45;
   border-radius: var(--radius);
-  padding: 24px 16px;
+  padding: 16px;
   cursor: pointer;
   transition: all 0.15s;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  min-height: 120px;
+  min-height: 180px;
+}
+
+.menu-img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 .menu-card:hover {

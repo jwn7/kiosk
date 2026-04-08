@@ -18,6 +18,9 @@ export default function MenuGrid({ activeCategory }) {
             className={`menu-card ${inCart ? 'in-cart' : ''}`}
             onClick={() => addItem(item.id)}
           >
+            {item.image && (
+              <img src={item.image} alt={item.name} className="menu-img" />
+            )}
             <span className="menu-name">{item.name}</span>
             <span className="menu-price">{category.price.toLocaleString()}원</span>
             {inCart && <span className="cart-badge">{inCart.quantity}</span>}
