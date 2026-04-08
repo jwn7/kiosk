@@ -1,13 +1,11 @@
 import { menuCategories } from './menuData';
+import { useLangStore } from '../i18n/langStore';
 
-const ICONS = {
-  coffee: '☕',
-  drink: '🧋',
-  tea: '🍵',
-  dessert: '🍰',
-};
+const ICONS = { coffee: '☕', drink: '🧋', tea: '🍵', dessert: '🍰' };
 
 export default function CategorySidebar({ activeCategory, onSelect }) {
+  const { lang, t } = useLangStore();
+
   return (
     <aside className="category-sidebar">
       <div className="sidebar-logo">
@@ -22,7 +20,7 @@ export default function CategorySidebar({ activeCategory, onSelect }) {
             onClick={() => onSelect(cat.id)}
           >
             <span className="cat-icon">{ICONS[cat.id]}</span>
-            <span className="cat-name">{cat.name}</span>
+            <span className="cat-name">{lang === 'en' ? cat.nameEn : cat.name}</span>
           </button>
         ))}
       </nav>

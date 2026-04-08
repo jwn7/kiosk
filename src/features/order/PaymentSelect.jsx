@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useCartStore, selectTotalPrice } from '../cart/cartStore';
+import { useLangStore } from '../i18n/langStore';
 import { submitOrder } from './orderService';
 
 export default function PaymentSelect({ onComplete, onBack }) {
   const items = useCartStore((s) => s.items);
   const total = useCartStore(selectTotalPrice);
+  const { t } = useLangStore();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -14,8 +16,8 @@ export default function PaymentSelect({ onComplete, onBack }) {
     try {
       const orderNumber = await submitOrder(items, method, total);
       onComplete(orderNumber);
-    } catch (err) {
-      setError('주문 처리 중 오류가 발생했습니다. 다시 시도해주세요.');
+    } catch {
+      setError(t('payError'));
     } finally {
       setLoading(false);
     }
@@ -23,34 +25,26 @@ export default function PaymentSelect({ onComplete, onBack }) {
 
   return (
     <div className="screen payment-select">
-      <h1>결제 방법 선택</h1>
-      <p className="payment-total">결제 금액: <strong>{total.toLocaleString()}원</strong></p>
+      <h1>{t('selectPayment')}</h1>
+      <p className="payment-total">{t('payAmount')}: <strong>{total.toLocaleString()}원</strong></p>
 
       {error && <p className="payment-error">{error}</p>}
 
       <div className="payment-methods">
-        <button
-          className="payment-btn credit"
-          onClick={() => handlePay('credit')}
-          disabled={loading}
-        >
+        <button className="payment-btn" onClick={() => handlePay('credit')} disabled={loading}>
           <span className="payment-icon">💳</span>
-          신용카드
+          {t('creditCard')}
         </button>
-        <button
-          className="payment-btn samsung"
-          onClick={() => handlePay('samsung')}
-          disabled={loading}
-        >
+        <button className="payment-btn" onClick={() => handlePay('samsung')} disabled={loading}>
           <span className="payment-icon">📱</span>
-          삼성페이
+          {t('samsungPay')}
         </button>
       </div>
 
-      {loading && <p className="payment-loading">처리 중...</p>}
+      {loading && <p className="payment-loading">{t('processing')}</p>}
 
       <button className="btn-secondary back-btn" onClick={onBack} disabled={loading}>
-        뒤로
+        {t('back')}
       </button>
     </div>
   );
