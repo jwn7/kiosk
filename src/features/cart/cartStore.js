@@ -28,6 +28,7 @@ export const useCartStore = create((set) => ({
           {
             menuId,
             name: menu.name,
+            nameEn: menu.nameEn,
             category: menu.category,
             basePrice: menu.basePrice,
             allowShot: menu.allowShot,
