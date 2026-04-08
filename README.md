@@ -1,16 +1,49 @@
-# React + Vite
+# ☕ Shot Up 카페 키오스크
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+터치스크린 키오스크 UI 포트폴리오 프로젝트.
+카테고리별 메뉴 선택, 장바구니 관리, 커피류 샷 추가, 결제 방법 선택, 주문 완료까지 전체 플로우를 구현했습니다.
 
-Currently, two official plugins are available:
+## 데모
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+> Vercel 배포 후 URL 추가 예정
 
-## React Compiler
+## 기술 스택
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React** + **Vite** (SPA)
+- **Zustand** — 장바구니 상태 관리
+- **CSS Variables** — 다크 테마 디자인 시스템
 
-## Expanding the ESLint configuration
+## 주요 기능
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 카테고리 사이드바 (커피류 / 음료류 / 차류 / 디저트류)
+- 장바구니 인라인 수량 조절 (+/- 버튼, X 버튼으로 삭제)
+- **샷 추가 로직** — 커피류 아이템에만 표시, 최대 2샷, 샷당 +500원
+- 주문 확인 → 결제 방법 선택 (신용카드 / 삼성페이) → 주문 완료
+- 주문 완료 후 5초 자동 복귀 또는 "처음으로" 버튼
+
+## 폴더 구조
+
+```
+src/
+  features/
+    menu/       # 메뉴 데이터, 카테고리 사이드바, 메뉴 그리드
+    cart/       # Zustand store, 장바구니 패널, 개별 아이템
+    order/      # 주문 확인, 결제 선택, 주문 완료
+  App.jsx       # 화면 전환 상태 (menu → confirm → payment → complete)
+```
+
+## 로컬 실행
+
+```bash
+npm install
+npm run dev
+```
+
+## 디자인
+
+| 역할 | 색상 |
+|------|------|
+| 배경 | `#0b1020` |
+| 메인 | `#00d4ff` |
+| 포인트 | `#7c3aed` |
+| 강조 | `#ffb703` |
