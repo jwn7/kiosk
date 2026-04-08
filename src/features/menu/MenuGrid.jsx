@@ -21,8 +21,10 @@ export default function MenuGrid({ activeCategory }) {
             {item.image && (
               <img src={item.image} alt={item.name} className="menu-img" />
             )}
-            <span className="menu-name">{item.name}</span>
-            <span className="menu-price">{category.price.toLocaleString()}원</span>
+            <div className="menu-card-body">
+              <span className="menu-name">{item.name}</span>
+              <span className="menu-price">{category.price.toLocaleString()}원</span>
+            </div>
             {inCart && <span className="cart-badge">{inCart.quantity}</span>}
           </button>
         );

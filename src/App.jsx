@@ -30,7 +30,9 @@ export default function App() {
           <CategorySidebar activeCategory={activeCategory} onSelect={setActiveCategory} />
           <main className="menu-main">
             <header className="kiosk-header">
-              <h1 className="brand">☕ Shot Up</h1>
+              <span className="header-category-label">
+                {menuCategories.find(c => c.id === activeCategory)?.name}
+              </span>
             </header>
             <MenuGrid activeCategory={activeCategory} />
           </main>
