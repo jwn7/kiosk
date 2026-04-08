@@ -36,13 +36,11 @@ export default function HomeScreen({ onStart }) {
       <div className="home-order-types">
         <button className="order-type-btn" onClick={() => handleSelect('dine-in')}>
           <span className="order-type-icon">🍽️</span>
-          <span className="order-type-label">{t('dineIn')}</span>
-          <span className="order-type-desc">{t('dineInDesc')}</span>
+          <span className="order-type-label">{t('dineInDesc')}</span>
         </button>
         <button className="order-type-btn" onClick={() => handleSelect('takeout')}>
           <span className="order-type-icon">🛍️</span>
-          <span className="order-type-label">{t('takeout')}</span>
-          <span className="order-type-desc">{t('takeoutDesc')}</span>
+          <span className="order-type-label">{t('takeoutDesc')}</span>
         </button>
       </div>
     </div>
