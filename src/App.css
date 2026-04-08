@@ -155,11 +155,12 @@ body {
 /* ─── 메뉴 그리드 ────────────────────────────── */
 .menu-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-  gap: 14px;
-  padding: 20px 22px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 12px;
   overflow-y: auto;
   flex: 1;
+  align-content: start;
 }
 
 .menu-card {
