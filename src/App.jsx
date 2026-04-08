@@ -34,7 +34,7 @@ export default function App() {
     <div className="kiosk-app">
       {screen === 'menu' && (
         <>
-          <CategorySidebar activeCategory={activeCategory} onSelect={setActiveCategory} />
+          <CategorySidebar activeCategory={activeCategory} onSelect={setActiveCategory} onHome={handleReset} />
           <main className="menu-main">
             <header className="kiosk-header">
               <span className="header-category-label">
